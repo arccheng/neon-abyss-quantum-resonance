@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>霓虹深淵：量子共鳴 | NEON ABYSS: QUANTUM RESONANCE</title>
-  <meta name="description" content="霓虹深淵：量子共鳴 — 單檔 HTML 霓虹風格俯視角生存射擊遊戲。單人無盡生存、1v1 P2P 對戰、19 張競技場、41 項進化模組，支援桌機與觸控。" />
+  <meta name="description" content="霓虹深淵：量子共鳴 — 單檔 HTML 霓虹風格俯視角生存射擊遊戲。單人無盡生存、1v1 P2P 對戰、19 張競技場、進化模組圖鑑，支援桌機與觸控。" />
   <meta name="theme-color" content="#03050c" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="霓虹深淵：量子共鳴 | NEON ABYSS" />
-  <meta property="og:description" content="霓虹生存射擊 roguelite：單人無盡生存與 1v1 對戰，19 張競技場、41 項進化模組，開網址就能玩。" />
+  <meta property="og:description" content="霓虹生存射擊 roguelite：單人無盡生存與 1v1 對戰，19 張競技場、進化模組圖鑑，開網址就能玩。" />
   <meta property="og:url" content="https://arccheng.github.io/neon-abyss-quantum-resonance/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2303050c'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle' fill='%2300f3ff'%3E%E2%AC%A1%3C/text%3E%3C/svg%3E" />
@@ -336,7 +336,7 @@
       <div class="flex justify-between items-center text-xs mb-1">
         <span class="font-bold tracking-widest text-pink-400 flex items-center gap-1.5">
           <span class="inline-block w-2 h-2 rotate-45 bg-pink-500"></span>
-          幾何主宰者 ARCHITECT TITAN
+          <span id="bossNameTag">幾何主宰者 ARCHITECT TITAN</span>
           <span id="bossNodesTag" class="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">護盾節點 3/3</span>
         </span>
         <span id="bossHpText" class="font-mono-tech font-bold text-pink-200">3000 / 3000</span>
@@ -364,7 +364,7 @@
     <div class="title-panel rounded-3xl max-w-5xl w-full p-5 sm:p-8 my-auto">
       <!-- 標題列 -->
       <div class="text-center mb-7">
-        <p class="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.42em] text-sky-300/80 font-bold whitespace-nowrap">34PX 3D WAVE LATTICE · 19 ARENAS</p>
+        <p class="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.42em] text-sky-300/80 font-bold whitespace-nowrap">34PX 3D WAVE LATTICE · 41 ARENAS</p>
         <h1 class="title-logo font-display font-black text-[34px] sm:text-6xl text-white mt-3 whitespace-nowrap">霓虹深淵：量子共鳴</h1>
         <div class="title-rule mx-auto mt-4"></div>
         <p class="font-display text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.36em] text-sky-300/70 mt-3 whitespace-nowrap">NEON ABYSS · QUANTUM RESONANCE</p>
@@ -378,7 +378,7 @@
         </button>
         <button id="tabModeRoom" onclick="switchLobbyMode('ROOM')" class="rounded-xl py-2.5 px-4 font-bold text-xs sm:text-sm border transition flex items-center justify-center gap-2 bg-slate-900/80 border-slate-700 text-slate-300 hover:border-sky-400/60">
           <span class="text-lg leading-none">⚔</span>
-          <span class="text-left leading-snug"><span class="block">雙人對戰 1v1</span><span class="block text-[11px] font-normal opacity-70">VERSUS · 建房間制，自選 19 大競技場</span></span>
+          <span class="text-left leading-snug"><span class="block">雙人對戰 1v1</span><span class="block text-[11px] font-normal opacity-70">VERSUS · 建房間制，自選 41 大競技場</span></span>
         </button>
       </div>
 
@@ -2336,7 +2336,7 @@
         enemyBulletMult: 1.0,
         damageTakenMult: 1.0,
         scoreMult: 1.0,
-        desc: '標準街機平衡節奏，每 3 波迎戰幾何主宰者 ARCHITECT TITAN。'
+        desc: '標準街機平衡節奏，每 3 波輪替迎戰六種首領：主宰者／掠奪者／君主／看守者／刺客／巨像。'
       },
       OVERDRIVE: {
         key: 'OVERDRIVE',
@@ -2423,6 +2423,10 @@
       { id: 'rear_thruster_cannon', cat: 'BALLISTICS', name: '逆向尾砲防衛', maxLv: 2, effect: '開火時同步向後方射出防衛彈', desc: '每次主砲射擊都會向戰機正後方發射防衛脈衝，自動牽制背後追兵。' },
       { id: 'triple_volley', cat: 'BALLISTICS', name: '過載三連齊射', maxLv: 3, effect: '每第 4 發追加 3 發扇形齊射', desc: '主砲每累積射擊 4 次，額外朝準心方向爆發 3 發高密度扇形齊射。' },
       { id: 'omni_pulse', cat: 'BALLISTICS', name: '全向脈衝散射器', maxLv: 3, effect: '每第 5 發釋放 8 向環形彈幕', desc: '每第 5 次射擊以戰機為中心向四周八個方位發射環形防衛電漿彈。' },
+      // v15.1：子彈加大模組（用戶回報缺少此類升級）
+      { id: 'quantum_expand_round', cat: 'BALLISTICS', name: '量子膨脹彈芯', maxLv: 5, effect: '+18% 子彈尺寸（彈體與命中判定）', desc: '以量子力場膨脹電漿彈芯，子彈體積與有效命中範圍同步放大，遠距離也容易擦中目標。' },
+      // v15.2：子彈壽命＝射程軸（原本無任何升級來源）
+      { id: 'ballistic_stabilizer', cat: 'BALLISTICS', name: '延長彈道穩定器', maxLv: 5, effect: '+15% 子彈飛行壽命（射程）', desc: '強化電漿彈的磁約束穩定場，讓每一發子彈飛得更遠才消散，全彈種同步受益。' },
 
       // 2. ARSENAL (8)
       { id: 'railgun_beam', cat: 'ARSENAL', name: '脈衝磁軌貫通束', maxLv: 4, effect: '每 3.4 秒朝準心發射貫穿磁軌光束', desc: '定期朝滑鼠準心方向射出瞬間貫穿全場的高能磁軌光束，無視裝甲與護盾。' },
@@ -2495,12 +2499,12 @@
     // ---- 稀有度系統：普通 / 稀有 / 史詩 / 傳奇 ----
     const MODULE_RARITY = {
       // 普通（純數值強化）
-      pulse_overclock: 'COMMON', kinetic_slug: 'COMMON', heavy_caliber: 'COMMON', shield_bastion: 'COMMON',
+      pulse_overclock: 'COMMON', kinetic_slug: 'COMMON', heavy_caliber: 'COMMON', shield_bastion: 'COMMON', ballistic_stabilizer: 'COMMON',
       vector_thrusters: 'COMMON', phase_capacitor: 'COMMON', emp_resonance: 'COMMON', chrono_cell: 'COMMON',
       aoe_expander: 'COMMON', data_siphon: 'COMMON', salvage_converter: 'COMMON', aegis_matrix: 'COMMON',
       precision_optic: 'COMMON', harmonic_amplifier: 'COMMON',
       // 稀有（帶機制或條件觸發）
-      phase_pierce: 'RARE', split_array: 'RARE', vector_ricochet: 'RARE', rear_thruster_cannon: 'RARE',
+      phase_pierce: 'RARE', split_array: 'RARE', vector_ricochet: 'RARE', rear_thruster_cannon: 'RARE', quantum_expand_round: 'RARE',
       prism_refraction: 'RARE', emp_shock_round: 'RARE', plasma_overburn: 'RARE', drone_overclock: 'RARE',
       vampiric_rounds: 'RARE', kill_siphon: 'RARE', reactive_armor: 'RARE', thorn_matrix: 'RARE',
       adrenaline_protocol: 'RARE', cryo_lattice: 'RARE', plasma_burn: 'RARE', emp_jammer: 'RARE',
@@ -2539,13 +2543,20 @@ const AI = (() => {
   const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
   function createBrain(roundNum) {
+    // v15：靶機隨回合進化——反應更快、手感更穩、開火紀律更高（BO 後段壓力遞增）
+    const evo = Math.max(0, (roundNum || 1) - 1);           // 進化係數：R1=0, R2=1, ...
+    const evoReact = Math.max(0.45, 1 - evo * 0.08);        // 反應時間倍率
+    const evoJitter = Math.max(0.5, 1 - evo * 0.10);        // 準心抖動倍率
+    const evoDisc = Math.min(1.3, 1 + evo * 0.06);          // 開火紀律倍率
     return {
       personality: pick(['SKIRMISHER', 'SNIPER', 'BERSERKER']),
+      evoJitter,
+      evoDisc,
       // 延遲快照 ring buffer（~180ms 感知延遲，取樣 60Hz）
       hist: [],
       HIST_CAP: 14,
       // 反應時間
-      reactionLeft: rand(0.15, 0.26),
+      reactionLeft: rand(0.15, 0.26) * evoReact,
       // 準心抖動
       aimNoise: { x: 0, y: 0 },
       aimNoiseTimer: 0,
@@ -2610,11 +2621,9 @@ const AI = (() => {
         : { wantDist: 520, strafeAmt: 0.7, fireChance: 0.85, leadErr: 0.2, jitter: 34, dashUse: 0.55 };
 
     // ==== 威脅偵測：接近中的敵彈（真人會「感覺到」彈流）====
+    // v15：移除上版遺留的空掃描迴圈（死代碼），僅保留下方有效判定
     let threat = null;
     let threatD = 1e9;
-    for (const b of world.bullets) {
-      if (b.owner === me || b.owner === foe) continue;  // 只閃對手的彈（含自身彈的只有 owner===foe）
-    }
     for (const b of world.bullets) {
       if (b.owner !== foe) continue;
       const bx = b.x - me.x, by = b.y - me.y;
@@ -2685,11 +2694,11 @@ const AI = (() => {
       }
     }
 
-    // ==== 準心：延遲座標 + 帶雜訊的預判 ====
+    // ==== 準心：延遲座標 + 帶雜訊的預判（v15：抖動隨回合收斂） ====
     if (brain.aimNoiseTimer <= 0) {
       brain.aimNoiseTimer = rand(0.07, 0.12);  // 準心重抽 ~90ms（手部抖動率）
       const a = Math.random() * Math.PI * 2;
-      const r = rand(0.15, 1.0) * P.jitter;
+      const r = rand(0.15, 1.0) * P.jitter * (brain.evoJitter || 1);
       brain.aimNoise.x = Math.cos(a) * r;
       brain.aimNoise.y = Math.sin(a) * r;
     }
@@ -2718,7 +2727,7 @@ const AI = (() => {
           brain.reactionLeft = Math.random() < 0.4 ? rand(0.12, 0.24) : 0;
         }
       }
-      firing = brain.phase === 'FIRE' && Math.random() < P.fireChance;
+      firing = brain.phase === 'FIRE' && Math.random() < Math.min(0.98, P.fireChance * (brain.evoDisc || 1));
       // 狙擊手遠距離才收斂射擊（近了就亂）
       if (brain.personality === 'SNIPER' && d < 420) firing = firing && Math.random() < 0.6;
       // 太遠不浪費子彈（除非狙擊手）
@@ -2846,6 +2855,10 @@ const ART = (() => {
   // ============ 1. BALLISTICS 彈道 ============
   M.pulse_overclock = () => frame(`${J(50, 62, C.sky)}${D(96, 62, C.sky, 4)}${D(118, 62, C.sky, 4)}${D(140, 62, C.sky, 4)}`, C.sky);
   M.kinetic_slug = () => frame(`${J(40, 62, C.sky)}${D(130, 62, C.sky, 10)}`, C.sky);
+  // v15.2：延長彈道穩定器——短軌跡與長軌跡對比
+  M.ballistic_stabilizer = () => frame(`${J(34, 62, C.sky)}${D(66, 40, C.sky, 3.5)}<line x1="56" y1="88" x2="96" y2="88" stroke="${C.sky}" stroke-width="3" stroke-linecap="round" opacity=".5"/>${L(56, 40, 210, 40, C.sky, 3.5)}${D(216, 40, C.sky, 4.5)}<line x1="56" y1="88" x2="206" y2="88" stroke="${C.sky}" stroke-width="3.5" stroke-linecap="round"/>${D(214, 88, C.sky, 5)}`, C.sky);
+  // v15.1：量子膨脹彈芯——小彈與大彈對比
+  M.quantum_expand_round = () => frame(`${J(38, 62, C.sky)}${D(92, 62, C.sky, 4)}<line x1="108" y1="62" x2="132" y2="62" stroke="${C.sky}" stroke-width="2.5" stroke-dasharray="4 4"/>${D(166, 62, C.sky, 12)}${D(166, 62, '#ffffff', 4.5)}`, C.sky);
   M.phase_pierce = () => frame(`${J(36, 62, C.sky)}${L(56, 62, 210, 62, C.sky, 3)}${D(88, 62, C.sky, 4.5)}${F(126, 62)}${F(180, 62)}`, C.sky);
   M.split_array = () => frame(`${J(40, 62, C.sky)}${L(58, 62, 104, 40, C.sky, 4)}${L(58, 62, 104, 84, C.sky, 4)}${D(118, 40, C.sky, 5)}${D(118, 84, C.sky, 5)}`, C.sky);
   M.vector_ricochet = () => frame(`${J(34, 84, C.sky)}${L(52, 84, 138, 84, C.sky, 4)}${L(138, 84, 200, 40, C.sky, 4)}${D(208, 36, C.sky, 4)}<rect x="132" y="34" width="7" height="60" rx="2" fill="#334155"/>`, C.sky);
@@ -3509,6 +3522,9 @@ const ART = (() => {
         p1: null,
         p2: null,
         roundTransitioning: false,
+        introTimer: 0,
+        roundTime: 0,
+        suddenDeath: false,
         crateTimer: 8,
         p1Choices: [],
         p2Choices: [],
@@ -3597,6 +3613,8 @@ const ART = (() => {
         fireTimer: 0,
         bulletSpeed: 780,
         bulletSpeedMult: 1.0,
+        bulletScale: 1.0,
+        bulletLifeMult: 1.0,
         critChance: 0.08,
         critMult: 1.65,
         armorReduction: 0,
@@ -3655,6 +3673,14 @@ const ART = (() => {
         case 'pulse_overclock':
           fighter.fireRateMult += 0.12;
           fighter.bulletSpeedMult += 0.08;
+          break;
+        case 'quantum_expand_round':
+          // v15.1：子彈加大——彈體與命中判定同步放大（5 級最多 +90%）
+          fighter.bulletScale = Math.min(1.9, fighter.bulletScale + 0.18);
+          break;
+        case 'ballistic_stabilizer':
+          // v15.2：子彈壽命＝射程（5 級最多 +75%）
+          fighter.bulletLifeMult = Math.min(1.75, fighter.bulletLifeMult + 0.15);
           break;
         case 'kinetic_slug':
           fighter.damageMult += 0.15;
@@ -3889,6 +3915,10 @@ const ART = (() => {
     // 9. 武器射擊與技能系統（100% 純手動滑鼠準心瞄準，零移動特效）
     // --------------------------------------------------------------------------
     function spawnPlayerBullet(owner, x, y, angle, dmg, speed, life, color, isCrit, isSub, bounces, pierce, isCap, isRocket = false) {
+      // v15.1：量子膨脹彈芯——子彈尺寸放大（彈體線寬 + 命中判定半徑）
+      const scale = (owner && owner.bulletScale) ? owner.bulletScale : 1.0;
+      // v15.2：延長彈道穩定器——子彈壽命＝射程放大（全彈種）
+      life *= (owner && owner.bulletLifeMult) ? owner.bulletLifeMult : 1.0;
       state.bullets.push({
         owner,
         x,
@@ -3906,6 +3936,8 @@ const ART = (() => {
         pierce,
         isCap,
         isRocket,
+        scale,
+        hitR: Math.max(5, 5 * scale),   // 命中判定半徑（原寫死 5）
         hitSet: new Set()
       });
     }
@@ -4566,6 +4598,15 @@ const ART = (() => {
       spawnFloatingText(target.x, target.y - 20, `-${dmg}`, target.color, true);
       audio.playHit(true);
 
+      // v15：受擊回饋——鏡頭震動 + 衝擊波（本地玩家被打到時痛感加倍）
+      const me = state.matchType === 'PVP'
+        ? (state.pvp.role === 'GUEST' ? state.pvp.p2 : state.pvp.p1)
+        : state.player;
+      const isMeHit = me === target;
+      state.camera.shake = Math.min(13, Math.max(state.camera.shake, isMeHit ? 8.5 : 3.5));
+      spawnShockwave(target.x, target.y, isMeHit ? 95 : 60, target.color, 0.26, 2.2);
+      if (isMeHit && dmg >= 30) state.hitstop = Math.max(state.hitstop, 0.045);
+
       if (target.shield <= 0) {
         target.shield = 0;
         if (!state.pvp.roundTransitioning) {
@@ -4801,7 +4842,7 @@ const ART = (() => {
           for (let j = state.enemies.length - 1; j >= 0; j--) {
             const e = state.enemies[j];
             if (e.hp <= 0 || b.hitSet.has(e.id)) continue;
-            if (distToSegment(e.x, e.y, b.prevX, b.prevY, b.x, b.y) <= e.radius + 5) {
+            if (distToSegment(e.x, e.y, b.prevX, b.prevY, b.x, b.y) <= e.radius + (b.hitR || 5)) {
               b.hitSet.add(e.id);
               onPlayerProjectileImpact(b, e.x, e.y);
               damageEnemy(e, b.dmg, b.owner, b.isCrit, false);
@@ -4821,7 +4862,7 @@ const ART = (() => {
           if (state.boss && state.boss.hp > 0) {
             let hitNode = false;
             for (const node of state.boss.nodes) {
-              if (node.hp > 0 && distToSegment(node.x, node.y, b.prevX, b.prevY, b.x, b.y) <= 18) {
+              if (node.hp > 0 && distToSegment(node.x, node.y, b.prevX, b.prevY, b.x, b.y) <= 18 + ((b.hitR || 5) - 5)) {
                 node.hp -= b.dmg;
                 onPlayerProjectileImpact(b, node.x, node.y);
                 if (node.hp <= 0) {
@@ -4836,7 +4877,7 @@ const ART = (() => {
             }
             if (hitNode) continue;
 
-            if (!b.hitSet.has('BOSS') && distToSegment(state.boss.x, state.boss.y, b.prevX, b.prevY, b.x, b.y) <= state.boss.radius + 6) {
+            if (!b.hitSet.has('BOSS') && distToSegment(state.boss.x, state.boss.y, b.prevX, b.prevY, b.x, b.y) <= state.boss.radius + (b.hitR || 5)) {
               b.hitSet.add('BOSS');
               onPlayerProjectileImpact(b, state.boss.x, state.boss.y);
               damageBoss(b.dmg, b.owner, b.isCrit);
@@ -4845,7 +4886,7 @@ const ART = (() => {
           }
         } else if (state.mode === 'PVP_PLAYING') {
           const target = b.owner.id === 'P1' ? state.pvp.p2 : state.pvp.p1;
-          if (target && target.shield > 0 && distToSegment(target.x, target.y, b.prevX, b.prevY, b.x, b.y) <= target.radius + 5) {
+          if (target && target.shield > 0 && distToSegment(target.x, target.y, b.prevX, b.prevY, b.x, b.y) <= target.radius + (b.hitR || 5)) {
             onPlayerProjectileImpact(b, target.x, target.y);
             damagePvpFighter(target, b.dmg, b.owner);
             state.bullets.splice(i, 1);
@@ -4895,14 +4936,14 @@ const ART = (() => {
       const spdScale = diff.enemySpeedMult * state.aresEnemySpeedMult;
 
       const specs = {
-        chaser:        { radius: 15, hp: 32,  spd: 175, color: '#ff2a6d', symbol: '!', score: 100 },
-        swarmer:       { radius: 12, hp: 20,  spd: 225, color: '#ffb703', symbol: '×', score: 80  },
-        bulwark:       { radius: 22, hp: 110, spd: 105, color: '#00f59b', symbol: '#', score: 220 },
-        sniper:        { radius: 16, hp: 46,  spd: 125, color: '#c084fc', symbol: '+', score: 160 },
-        splitter:      { radius: 19, hp: 56,  spd: 145, color: '#f59e0b', symbol: '÷', score: 150 },
-        mini_splitter: { radius: 11, hp: 22,  spd: 205, color: '#fbbf24', symbol: '·', score: 65  },
-        pulsar:        { radius: 18, hp: 68,  spd: 115, color: '#38bdf8', symbol: '≈', score: 180 },
-        phantom:       { radius: 15, hp: 42,  spd: 165, color: '#e879f9', symbol: '?', score: 155 }
+        chaser:        { radius: 15, hp: 32,  spd: 175, color: '#ff2a6d', score: 100 },
+        swarmer:       { radius: 12, hp: 20,  spd: 225, color: '#ffb703', score: 80  },
+        bulwark:       { radius: 22, hp: 110, spd: 105, color: '#00f59b', score: 220 },
+        sniper:        { radius: 16, hp: 46,  spd: 125, color: '#c084fc', score: 160 },
+        splitter:      { radius: 19, hp: 56,  spd: 145, color: '#f59e0b', score: 150 },
+        mini_splitter: { radius: 11, hp: 22,  spd: 205, color: '#fbbf24', score: 65  },
+        pulsar:        { radius: 18, hp: 68,  spd: 115, color: '#38bdf8', score: 180 },
+        phantom:       { radius: 15, hp: 42,  spd: 165, color: '#e879f9', score: 155 }
       };
 
       const sp = specs[type] || specs.chaser;
@@ -4916,7 +4957,6 @@ const ART = (() => {
         maxHp: Math.round(sp.hp * hpScale),
         speed: sp.spd * spdScale,
         color: sp.color,
-        symbol: sp.symbol,
         score: sp.score,
         angle: 0,
         hitFlash: 0,
@@ -4934,37 +4974,68 @@ const ART = (() => {
       const p = state.player;
       const w = state.wave;
       const diff = DIFFICULTIES[state.difficultyKey] || DIFFICULTIES.STANDARD;
+      // v16：boss 池——第 1/2/3 次 boss 戰分別遭遇三種首領，之後循環（血量仍隨波數成長）
+      const bossIndex = Math.max(1, Math.round(w / 3));
+      const KINDS = {
+        titan:   { name: '幾何主宰者 ARCHITECT TITAN', banner: 'ARCHITECT TITAN 降臨！優先擊毀 3 個外圍護盾節點', radius: 46, hpMult: 1.0 },
+        reaver:  { name: '虛空掠奪者 VOID REAVER',     banner: 'VOID REAVER 降臨！高速環繞與突進，小心螺旋彈幕', radius: 38, hpMult: 0.8 },
+        monarch: { name: '分裂君主 SPLITTER MONARCH', banner: 'SPLITTER MONARCH 降臨！持續召喚增援，別被包圍', radius: 52, hpMult: 1.15 },
+        warden:  { name: '引力看守者 GRAVITY WARDEN',  banner: 'GRAVITY WARDEN 降臨！小心引力牽引，別被拉進彈幕', radius: 44, hpMult: 1.05 },
+        shade:   { name: '鏡像刺客 MIRROR SHADE',      banner: 'MIRROR SHADE 降臨！它會瞬移到你的背後', radius: 36, hpMult: 0.9 },
+        prism:   { name: '稜鏡巨像 PRISM COLOSSUS',    banner: 'PRISM COLOSSUS 降臨！擊毀 4 個稜鏡節點', radius: 50, hpMult: 1.2 }
+      };
+      const kind = ['titan', 'reaver', 'monarch', 'warden', 'shade', 'prism'][(bossIndex - 1) % 6];
+      const spec = KINDS[kind];
+
       // 畫面即戰場：首領生在畫面上緣中間；一般大地圖沿用原邏輯（玩家上方 340px）
       const isScreenArena = Boolean(state.world.fitToScreen);
-      const bossSafeR = 46 + 34 + 22; // 本體半徑 + 節點軌道 + 餘量
+      const bossSafeR = spec.radius + 34 + 22; // 本體半徑 + 節點軌道 + 餘量
       const bx = isScreenArena
         ? clamp(state.world.width * 0.5, bossSafeR + 30, state.world.width - bossSafeR - 30)
         : clamp((p ? p.x : 1400), 360, state.world.width - 360);
       const by = isScreenArena
         ? clamp(state.world.height * 0.28, bossSafeR + 60, state.world.height - bossSafeR - 60)
         : clamp((p ? p.y - 340 : 1000), 260, state.world.height - 260);
-      const maxHp = Math.round((950 + w * 380) * diff.enemyHpMult);
+      const maxHp = Math.round((950 + w * 380) * diff.enemyHpMult * spec.hpMult);
+
+      // v16：只有 TITAN 有 3 個護盾節點；其餘首領無節點（本體全額承傷）
+      const nodes = kind === 'titan' ? [
+        { angle: 0, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by },
+        { angle: (Math.PI * 2) / 3, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by },
+        { angle: (Math.PI * 4) / 3, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by }
+      ] : kind === 'prism' ? [
+        { angle: 0, hp: Math.round(maxHp * 0.18), maxHp: Math.round(maxHp * 0.18), x: bx, y: by },
+        { angle: (Math.PI * 2) / 4, hp: Math.round(maxHp * 0.18), maxHp: Math.round(maxHp * 0.18), x: bx, y: by },
+        { angle: (Math.PI * 4) / 4, hp: Math.round(maxHp * 0.18), maxHp: Math.round(maxHp * 0.18), x: bx, y: by },
+        { angle: (Math.PI * 6) / 4, hp: Math.round(maxHp * 0.18), maxHp: Math.round(maxHp * 0.18), x: bx, y: by }
+      ] : [];
 
       state.boss = {
+        kind,
         x: bx,
         y: by,
-        radius: 46,
+        radius: spec.radius,
         hp: maxHp,
         maxHp,
         spin: 0,
         hitFlash: 0,
         attackTimer: 1.6,
         pattern: 0,
-        nodes: [
-          { angle: 0, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by },
-          { angle: (Math.PI * 2) / 3, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by },
-          { angle: (Math.PI * 4) / 3, hp: Math.round(maxHp * 0.22), maxHp: Math.round(maxHp * 0.22), x: bx, y: by }
-        ]
+        nodes,
+        angle: p ? Math.atan2(p.y - by, p.x - bx) : 0,   // v16：掠奪者朝向
+        strafeDir: Math.random() < 0.5 ? 1 : -1,          // v16：掠奪者環繞方向
+        dashT: 0,
+        dashVX: 0,
+        dashVY: 0,
+        pullT: 0
       };
 
       document.getElementById('bossHud').classList.remove('hidden');
-      spawnKillExplosion(bx, by, '#ff2a6d', 1.8);
-      showWaveBanner(`BOSS // WAVE ${String(w).padStart(2, '0')}`, 'ARCHITECT TITAN 降臨！優先擊毀 3 個外圍護盾節點');
+      document.getElementById('bossNameTag').textContent = spec.name;
+      document.getElementById('bossNodesTag').classList.toggle('hidden', nodes.length === 0);
+      if (nodes.length > 0) document.getElementById('bossNodesTag').textContent = `護盾節點 ${nodes.length}/${nodes.length}`;
+      spawnKillExplosion(bx, by, kind === 'reaver' ? '#38bdf8' : (kind === 'monarch' ? '#c084fc' : (kind === 'warden' ? '#00f59b' : (kind === 'shade' ? '#e879f9' : (kind === 'prism' ? '#ffb703' : '#ff2a6d')))), 1.8);
+      showWaveBanner(`BOSS // WAVE ${String(w).padStart(2, '0')}`, spec.banner);
     }
 
     function updateSoloPlaying(dt) {
@@ -5211,24 +5282,70 @@ const ART = (() => {
         }
       }
 
-      // 更新 ARCHITECT TITAN 首領與 3 個護盾節點
+      // v16：首領更新（依 kind：titan 節點重彈 / reaver 環繞突進 / monarch 召喚重坦）
       if (state.boss && state.boss.hp > 0) {
         const b = state.boss;
         if (b.hitFlash > 0) b.hitFlash -= dt;
-        b.spin += 1.1 * worldDt;
+        b.spin += (b.kind === 'reaver' ? 2.4 : (b.kind === 'shade' ? 1.8 : (b.kind === 'prism' ? 0.7 : 1.1))) * worldDt;
         const angToP = Math.atan2(p.y - b.y, p.x - b.x);
-        // 畫面即戰場：保持最小追擊距離，不整身壓到玩家臉上
-        const chaseKeep = state.world.fitToScreen ? 170 : 0;
-        const dToBoss = Math.hypot(p.x - b.x, p.y - b.y);
-        if (dToBoss > chaseKeep) {
-          b.x += Math.cos(angToP) * 78 * worldDt;
-          b.y += Math.sin(angToP) * 78 * worldDt;
+        b.angle = angToP;
+        const isScreenArena = Boolean(state.world.fitToScreen);
+
+        if (b.kind === 'reaver') {
+          // 掠奪者：突進期間直線衝刺；平時以 150px/s 繞玩家環繞游走
+          if (b.dashT > 0) {
+            b.dashT -= worldDt;
+            b.x += b.dashVX * worldDt;
+            b.y += b.dashVY * worldDt;
+          } else {
+            const perp = angToP + (Math.PI / 2) * b.strafeDir;
+            b.x += Math.cos(perp) * 150 * worldDt;
+            b.y += Math.sin(perp) * 150 * worldDt;
+            const d = Math.hypot(p.x - b.x, p.y - b.y);
+            if (d > 220) {
+              b.x += Math.cos(angToP) * 100 * worldDt;
+              b.y += Math.sin(angToP) * 100 * worldDt;
+            } else if (d < 140) {
+              b.x -= Math.cos(angToP) * 90 * worldDt;
+              b.y -= Math.sin(angToP) * 90 * worldDt;
+            }
+          }
+        } else if (b.kind === 'shade') {
+          // 刺客：190px/s 高速貼身環繞
+          const perp = angToP + (Math.PI / 2) * b.strafeDir;
+          b.x += Math.cos(perp) * 190 * worldDt;
+          b.y += Math.sin(perp) * 190 * worldDt;
+          const d = Math.hypot(p.x - b.x, p.y - b.y);
+          if (d > 210) {
+            b.x += Math.cos(angToP) * 120 * worldDt;
+            b.y += Math.sin(angToP) * 120 * worldDt;
+          } else if (d < 150) {
+            b.x -= Math.cos(angToP) * 90 * worldDt;
+            b.y -= Math.sin(angToP) * 90 * worldDt;
+          }
+        } else {
+          // 主宰者 / 君主 / 看守者 / 巨像：緩慢追擊；畫面戰場保持最小距離不貼臉
+          const chaseKeep = isScreenArena ? (b.kind === 'monarch' ? 150 : (b.kind === 'prism' ? 200 : (b.kind === 'warden' ? 260 : 170))) : 0;
+          const dToBoss = Math.hypot(p.x - b.x, p.y - b.y);
+          if (dToBoss > chaseKeep) {
+            const spd = b.kind === 'monarch' ? 55 : (b.kind === 'prism' ? 25 : (b.kind === 'warden' ? 60 : 78));
+            b.x += Math.cos(angToP) * spd * worldDt;
+            b.y += Math.sin(angToP) * spd * worldDt;
+          }
+        }
+        // v16.1：看守者引力牽引生效中——把玩家拉向本體
+        if (b.kind === 'warden' && b.pullT > 0) {
+          b.pullT -= worldDt;
+          const pdx = b.x - p.x, pdy = b.y - p.y;
+          const pd = Math.hypot(pdx, pdy) || 1;
+          p.x += (pdx / pd) * 150 * worldDt;
+          p.y += (pdy / pd) * 150 * worldDt;
         }
         b.x = clamp(b.x, b.radius + 30, state.world.width - b.radius - 30);
         b.y = clamp(b.y, b.radius + 30, state.world.height - b.radius - 30);
 
         b.nodes.forEach((n, idx) => {
-          const na = b.spin + (Math.PI * 2 * idx) / 3;
+          const na = b.spin + (Math.PI * 2 * idx) / b.nodes.length;
           n.x = b.x + Math.cos(na) * (b.radius + 34);
           n.y = b.y + Math.sin(na) * (b.radius + 34);
         });
@@ -5236,39 +5353,107 @@ const ART = (() => {
         b.attackTimer -= worldDt;
         if (b.attackTimer <= 0) {
           b.pattern = (b.pattern + 1) % 2;
-          b.attackTimer = 1.85;
           const spd = 300 * diff.enemyBulletMult;
-          if (b.pattern === 0) {
+          if (b.kind === 'reaver') {
+            // 掠奪者：螺旋環彈 ↔ 突進＋扇形狙擊
+            b.attackTimer = 1.7;
+            if (b.pattern === 0) {
+              for (let k = 0; k < 10; k++) {
+                const a = b.spin * 1.8 + (Math.PI * 2 * k) / 10;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd, vy: Math.sin(a) * spd, dmg: 12, color: '#38bdf8', isHeavy: false });
+              }
+            } else {
+              b.dashT = 0.42;
+              b.dashVX = Math.cos(angToP) * 620;
+              b.dashVY = Math.sin(angToP) * 620;
+              b.strafeDir = -b.strafeDir;
+              for (let s = -1; s <= 1; s++) {
+                const a = angToP + s * 0.16;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 1.3, vy: Math.sin(a) * spd * 1.3, dmg: 13, color: '#7dd3fc', isHeavy: true });
+              }
+            }
+          } else if (b.kind === 'monarch') {
+            // 君主：慢速重彈環 ↔ 召喚 2 隻蜂群（場上小怪 < 10 時）
+            b.attackTimer = 2.3;
+            if (b.pattern === 0) {
+              for (let k = 0; k < 8; k++) {
+                const a = b.spin + (Math.PI * 2 * k) / 8;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 0.68, vy: Math.sin(a) * spd * 0.68, dmg: 12, color: '#c084fc', isHeavy: true });
+              }
+            } else if (state.enemies.length < 10) {
+              for (let k = 0; k < 2; k++) {
+                const a = Math.random() * Math.PI * 2;
+                spawnEnemy('swarmer', clamp(b.x + Math.cos(a) * 70, 60, state.world.width - 60), clamp(b.y + Math.sin(a) * 70, 60, state.world.height - 60));
+              }
+            }
+          } else if (b.kind === 'warden') {
+            // 看守者：12 向慢速環彈 ↔ 引力牽引 1.3 秒＋8 向環彈
+            b.attackTimer = 2.0;
+            if (b.pattern === 0) {
+              for (let k = 0; k < 12; k++) {
+                const a = b.spin * 0.8 + (Math.PI * 2 * k) / 12;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 0.6, vy: Math.sin(a) * spd * 0.6, dmg: 12, color: '#00f59b', isHeavy: false });
+              }
+            } else {
+              b.pullT = 1.3;
+              for (let k = 0; k < 8; k++) {
+                const a = (Math.PI * 2 * k) / 8;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 0.75, vy: Math.sin(a) * spd * 0.75, dmg: 12, color: '#34d399', isHeavy: false });
+              }
+            }
+          } else if (b.kind === 'shade') {
+            // 刺客：5 連快速點射 ↔ 瞬移到玩家背後＋6 向扇形
+            b.attackTimer = 1.6;
+            if (b.pattern === 0) {
+              for (let s = -2; s <= 2; s++) {
+                const a = angToP + s * 0.09;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 1.4, vy: Math.sin(a) * spd * 1.4, dmg: 9, color: '#e879f9', isHeavy: false });
+              }
+            } else {
+              const dx = p.x - b.x, dy = p.y - b.y;
+              const dd = Math.hypot(dx, dy) || 1;
+              spawnShockwave(b.x, b.y, 70, '#e879f9', 0.3, 2.0);
+              b.x = clamp(p.x + (dx / dd) * 150, b.radius + 30, state.world.width - b.radius - 30);
+              b.y = clamp(p.y + (dy / dd) * 150, b.radius + 30, state.world.height - b.radius - 30);
+              spawnShockwave(b.x, b.y, 70, '#e879f9', 0.3, 2.0);
+              const angNew = Math.atan2(p.y - b.y, p.x - b.x);
+              for (let s = -3; s <= 3; s++) {
+                const a = angNew + s * 0.13;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 1.1, vy: Math.sin(a) * spd * 1.1, dmg: 10, color: '#f0abfc', isHeavy: false });
+              }
+            }
+          } else if (b.kind === 'prism') {
+            // 巨像：4 向十字重彈牆 ↔ 兩層速度不同的 16 向環
+            b.attackTimer = 2.1;
+            if (b.pattern === 0) {
+              for (let k = 0; k < 4; k++) {
+                const a = (Math.PI / 2) * k + Math.PI / 4;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 0.55, vy: Math.sin(a) * spd * 0.55, dmg: 16, color: '#ffb703', isHeavy: true });
+              }
+            } else {
+              for (let k = 0; k < 16; k++) {
+                const a = (Math.PI * 2 * k) / 16;
+                const s2 = k % 2 === 0 ? 0.8 : 1.1;
+                state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * s2, vy: Math.sin(a) * spd * s2, dmg: 12, color: '#fbbf24', isHeavy: false });
+              }
+            }
+          } else if (b.pattern === 0) {
+            // 主宰者：14 向環形重彈
+            b.attackTimer = 1.85;
             for (let k = 0; k < 14; k++) {
               const a = b.spin + (Math.PI * 2 * k) / 14;
-              state.enemyBullets.push({
-                x: b.x + Math.cos(a) * b.radius,
-                y: b.y + Math.sin(a) * b.radius,
-                vx: Math.cos(a) * spd,
-                vy: Math.sin(a) * spd,
-                dmg: 14,
-                color: '#ff2a6d',
-                isHeavy: true
-              });
+              state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd, vy: Math.sin(a) * spd, dmg: 14, color: '#ff2a6d', isHeavy: true });
             }
           } else {
+            // 主宰者：5 向扇形狙擊
+            b.attackTimer = 1.85;
             for (let s = -2; s <= 2; s++) {
               const a = angToP + s * 0.14;
-              state.enemyBullets.push({
-                x: b.x + Math.cos(a) * b.radius,
-                y: b.y + Math.sin(a) * b.radius,
-                vx: Math.cos(a) * spd * 1.25,
-                vy: Math.sin(a) * spd * 1.25,
-                dmg: 15,
-                color: '#ffb703',
-                isHeavy: true
-              });
+              state.enemyBullets.push({ x: b.x + Math.cos(a) * b.radius, y: b.y + Math.sin(a) * b.radius, vx: Math.cos(a) * spd * 1.25, vy: Math.sin(a) * spd * 1.25, dmg: 15, color: '#ffb703', isHeavy: true });
             }
           }
         }
       }
-
-      // 更新敵方子彈
       for (let i = state.enemyBullets.length - 1; i >= 0; i--) {
         const eb = state.enemyBullets[i];
         eb.x += eb.vx * worldDt;
@@ -5406,6 +5591,15 @@ const ART = (() => {
     // --------------------------------------------------------------------------
     // 13. 雙人 1v1 對戰更新循環與網路房間同步 (PvP Arena + BroadcastChannel/PeerJS)
     // --------------------------------------------------------------------------
+    // v15：雙人相機——戰場不大於螢幕時置中（畫面即戰場，雙方永遠同框），
+    // 戰場大於螢幕（訪客用手機等小螢幕）時跟隨自己的戰機並夾在戰場邊界內
+    function pvpCameraFollow(target, dt) {
+      const tcx = state.world.width <= viewW() ? state.world.width * 0.5 : clamp(target.x, viewW() * 0.5, state.world.width - viewW() * 0.5);
+      const tcy = state.world.height <= viewH() ? state.world.height * 0.5 : clamp(target.y, viewH() * 0.5, state.world.height - viewH() * 0.5);
+      state.camera.x += (tcx - state.camera.x) * Math.min(1, dt * 10);
+      state.camera.y += (tcy - state.camera.y) * Math.min(1, dt * 10);
+    }
+
     function updatePvpPlaying(dt) {
       const pvp = state.pvp;
       const p1 = pvp.p1;
@@ -5420,30 +5614,32 @@ const ART = (() => {
       const firing = state.autoFire || state.mouse.down;
 
       if (pvp.role === 'GUEST') {
-        sendNetMessage({ type: 'GUEST_INPUT', mx, my, aimX, aimY, firing });
-        state.camera.x += (p2.x - state.camera.x) * Math.min(1, dt * 10);
-        state.camera.y += (p2.y - state.camera.y) * Math.min(1, dt * 10);
+        // v15：部署倒數期間訪客也不得開火，並同步遞減本地倒數
+        if (pvp.introTimer > 0) pvp.introTimer -= dt;
+        sendNetMessage({ type: 'GUEST_INPUT', mx, my, aimX, aimY, firing: firing && pvp.introTimer <= 0 });
+        pvpCameraFollow(p2, dt);
         return;
       }
 
-      // HOST 執行權威物理運算
-      stepPvpFighter(p1, mx, my, aimX, aimY, firing, dt);
+      // HOST 執行權威物理運算（v15：開場部署倒數期間禁止開火）
+      const canFire = pvp.introTimer <= 0;
+      stepPvpFighter(p1, mx, my, aimX, aimY, firing && canFire, dt);
 
       if (pvp.aiBotEnabled && !pvp.guestConnected) {
         // 類人 AI 戰術靶機：延遲感知、不完美預判、射擊紀律、戰術衝刺
         if (!pvp.aiBrain) pvp.aiBrain = AI.createBrain(pvp.round || 1);
         const cmd = AI.step(pvp.aiBrain, p2, p1, { bullets: state.bullets, width: state.world.width, height: state.world.height }, dt);
-        if (cmd.dash) {
+        if (cmd.dash && canFire) {
           performFighterDash(p2, cmd.mx, cmd.my, cmd.aimX, cmd.aimY);
         }
-        stepPvpFighter(p2, cmd.mx, cmd.my, cmd.aimX, cmd.aimY, cmd.firing, dt);
+        stepPvpFighter(p2, cmd.mx, cmd.my, cmd.aimX, cmd.aimY, cmd.firing && canFire, dt);
       } else {
         // 訪客暫停、斷線或封包中斷時（超過 0.5 秒沒有輸入），遠端戰機停止行動與射擊
         pvp.remoteAge = (pvp.remoteAge || 0) + dt;
         const ri = pvp.remoteAge > 0.5
           ? { mx: 0, my: 0, aimX: pvp.remoteInput.aimX, aimY: pvp.remoteInput.aimY, firing: false, dash: false }
           : pvp.remoteInput;
-        stepPvpFighter(p2, ri.mx, ri.my, ri.aimX, ri.aimY, ri.firing, dt);
+        stepPvpFighter(p2, ri.mx, ri.my, ri.aimX, ri.aimY, ri.firing && canFire, dt);
       }
 
       // 空投戰術補給箱
@@ -5492,14 +5688,38 @@ const ART = (() => {
       updateMinesAndTurrets(dt);
       updateProjectilesAndWalls(dt);
 
-      state.camera.x += (p1.x - state.camera.x) * Math.min(1, dt * 10);
-      state.camera.y += (p1.y - state.camera.y) * Math.min(1, dt * 10);
+      // v15：開場部署倒數遞減
+      if (pvp.introTimer > 0) pvp.introTimer -= dt;
+
+      // v15：回合 75 秒時限——時間到由護盾比例高者勝，杜絕大地圖龜縮僵局
+      pvp.roundTime = (pvp.roundTime || 0) + dt;
+      if (pvp.roundTime >= 75 && !pvp.roundTransitioning) {
+        const pct1 = p1.shield / Math.max(1, p1.maxShield);
+        const pct2 = p2.shield / Math.max(1, p2.maxShield);
+        if (Math.abs(pct1 - pct2) < 0.001) {
+          // 護盾比例相同 → 突然死亡：雙方現有護盾減半，再戰 20 秒先倒者敗
+          p1.shield = Math.max(1, Math.round(p1.shield * 0.5));
+          p2.shield = Math.max(1, Math.round(p2.shield * 0.5));
+          pvp.roundTime = 55;
+          showWaveBanner('SUDDEN DEATH', '護盾比例相同 — 護盾減半，先倒者敗！');
+          sendNetMessage({ type: 'SUDDEN_DEATH', p1Shield: p1.shield, p2Shield: p2.shield });
+        } else {
+          const timeWinner = pct1 > pct2 ? 'P1' : 'P2';
+          const timeLoser = timeWinner === 'P1' ? p2 : p1;
+          spawnFloatingText(timeLoser.x, timeLoser.y - 30, '時間到 — 護盾落後', '#ffb703', true);
+          handlePvpRoundEnd(timeWinner);
+        }
+      }
+
+      pvpCameraFollow(p1, dt);
 
       // 同步狀態給訪客
       if (pvp.guestConnected) {
         sendNetMessage({
           type: 'WORLD_STATE',
           t: state.globalTime,
+          intro: pvp.introTimer || 0,
+          rt: pvp.roundTime || 0,
           p1: serializeFighter(p1),
           p2: serializeFighter(p2),
           bullets: state.bullets.map(plainCopy),
@@ -5573,11 +5793,15 @@ const ART = (() => {
 
     function handlePvpRoundEnd(winnerId) {
       const pvp = state.pvp;
+      pvp.lastRoundWinner = winnerId;
       if (winnerId === 'P1') pvp.scoreP1++;
       else pvp.scoreP2++;
 
       const loser = winnerId === 'P1' ? pvp.p2 : pvp.p1;
       spawnKillExplosion(loser.x, loser.y, loser.color, 1.9);
+      // v15：回合終結的儀式感——頓幀 120ms + 全場大震動
+      state.hitstop = Math.max(state.hitstop, 0.12);
+      state.camera.shake = Math.min(16, state.camera.shake + 12);
       updateHudDisplay();
 
       const winsNeeded = Math.ceil(pvp.bestOf / 2);
@@ -5607,8 +5831,8 @@ const ART = (() => {
       const pvpLbl = document.getElementById('goHighScore').previousElementSibling;
       if (pvpLbl) pvpLbl.textContent = '競技場';
       document.getElementById('goHighScore').textContent = state.world.mapObj.name;
-      document.getElementById('goWaveKills').textContent = `總回合數 ${pvp.round}`;
-      document.getElementById('goPeakDps').textContent = `${Math.round(state.peakDps)} DPS`;
+      document.getElementById('goWaveKills').textContent = `總回合數 ${pvp.round} · 模組 P1:${pvp.p1.installedList.length} / P2:${pvp.p2.installedList.length}`;
+      document.getElementById('goPeakDps').textContent = `回合比數 ${pvp.scoreP1} : ${pvp.scoreP2}`;
       document.getElementById('gameOverModal').classList.remove('hidden');
     }
 
@@ -5618,8 +5842,12 @@ const ART = (() => {
       document.getElementById('pvpRoundResultBanner').textContent =
         `ROUND ${pvp.round} — ${winnerId === 'P1' ? 'P1 量子藍翼' : 'P2 緋紅破曉'} 勝出！`;
 
-      pvp.p1Choices = drawModuleChoices(pvp.p1, 5);
-      pvp.p2Choices = drawModuleChoices(pvp.p2, 5);
+      // v15：勝者 4 選 1；敗者 3 選 1 並額外回復 12% 護盾（追趕機制，避免滾雪球）
+      const winnerF = winnerId === 'P1' ? pvp.p1 : pvp.p2;
+      const loserF = winnerId === 'P1' ? pvp.p2 : pvp.p1;
+      healFighter(loserF, Math.max(20, Math.round(loserF.maxShield * 0.12)));
+      pvp.p1Choices = drawModuleChoices(pvp.p1, winnerId === 'P1' ? 4 : 3);
+      pvp.p2Choices = drawModuleChoices(pvp.p2, winnerId === 'P2' ? 4 : 3);
       pvp.p1Picked = false;
       pvp.p2Picked = false;
 
@@ -5631,6 +5859,10 @@ const ART = (() => {
         p1Ids: pvp.p1Choices.map(m => m.id),
         p2Ids: pvp.p2Choices.map(m => m.id)
       });
+
+      const mySideH = pvp.role === 'HOST' ? 'P1' : 'P2';
+      document.getElementById('pvpRoundResultBanner').textContent +=
+        (winnerId === mySideH ? '（勝者獎勵：4 選 1）' : '（你獲得敗者重整：+12% 護盾）');
 
       renderPvpUpgradeCards();
       document.getElementById('pvpUpgradeModal').classList.remove('hidden');
@@ -5644,9 +5876,10 @@ const ART = (() => {
       const box = document.getElementById('pvpUpgradeContainer');
       box.innerHTML = '';
 
+      const lastWinner = pvp.lastRoundWinner || 'P1';
       const sides = [
-        { id: 'P1', title: 'P1 量子藍翼 戰術進化', accent: 'text-sky-300', choices: pvp.p1Choices, picked: pvp.p1Picked, canClick: pvp.role === 'HOST' && !pvp.p1Picked },
-        { id: 'P2', title: 'P2 緋紅破曉 戰術進化', accent: 'text-rose-400', choices: pvp.p2Choices, picked: pvp.p2Picked, canClick: pvp.role === 'GUEST' && !pvp.p2Picked }
+        { id: 'P1', title: `P1 量子藍翼 ${lastWinner === 'P1' ? '★ 勝者獎勵' : '↺ 敗者重整（+12% 護盾）'}`, accent: 'text-sky-300', choices: pvp.p1Choices, picked: pvp.p1Picked, canClick: pvp.role === 'HOST' && !pvp.p1Picked },
+        { id: 'P2', title: `P2 緋紅破曉 ${lastWinner === 'P2' ? '★ 勝者獎勵' : '↺ 敗者重整（+12% 護盾）'}`, accent: 'text-rose-400', choices: pvp.p2Choices, picked: pvp.p2Picked, canClick: pvp.role === 'GUEST' && !pvp.p2Picked }
       ];
 
       sides.forEach(s => {
@@ -5655,7 +5888,7 @@ const ART = (() => {
         col.innerHTML = `
           <div class="flex items-center justify-between mb-3">
             <span class="font-bold text-sm ${s.accent}">${s.title}</span>
-            <span class="text-xs font-mono-tech ${s.picked ? 'text-emerald-400' : 'text-amber-300'}">${s.picked ? '✓ 已鎖定' : '請選擇 1 項'}</span>
+            <span class="text-xs font-mono-tech ${s.picked ? 'text-emerald-400' : 'text-amber-300'}">${s.picked ? '✓ 已鎖定 · 等待對手…' : (s.canClick ? '請選擇 1 項' : '等待對手選擇…')}</span>
           </div>
           <div class="space-y-2.5" id="pvpCards_${s.id}"></div>
         `;
@@ -5736,12 +5969,17 @@ const ART = (() => {
       if (pvp.aiPickTimer) { clearTimeout(pvp.aiPickTimer); pvp.aiPickTimer = null; }
       pvp.round = roundNum;
       pvp.roundTransitioning = false;
+      // v15：每回合重置——開場 1.6 秒部署倒數（雙方禁止開火）與 75 秒回合時限
+      pvp.introTimer = 1.6;
+      pvp.roundTime = 0;
+      pvp.suddenDeath = false;
       if (state.pvp.aiBotEnabled && !state.pvp.guestConnected) state.pvp.aiBrain = AI.createBrain(roundNum);
       state.bullets = [];
       state.enemyBullets = [];
       state.mines = [];
       state.turrets = [];
       state.crates = [];
+      pvp.crateTimer = 8;  // v15：每回合重置補給箱倒數，避免上一局結轉秒掉第一箱
 
       const sp1 = state.world.spawns[0] || { x: 600, y: state.world.height * 0.5 };
       const sp2 = state.world.spawns[1] || { x: state.world.width - 600, y: state.world.height * 0.5 };
@@ -5761,7 +5999,7 @@ const ART = (() => {
       state.mode = 'PVP_PLAYING';
       if (pvp.role === 'HOST' && roundNum > 1) sendNetMessage({ type: 'ROUND_START', round: roundNum });
       updateHudDisplay();
-      showWaveBanner(`ROUND ${roundNum}`, `${state.world.mapObj.name} // 1V1 DUEL`);
+      showWaveBanner(`ROUND ${roundNum}`, `${state.world.mapObj.name} // 75 秒時限 · 護盾歸零者敗`);
     }
 
     // 建房大廳與雙通道同步（同瀏覽器跨分頁 BroadcastChannel + 跨裝置 PeerJS）
@@ -5990,7 +6228,8 @@ const ART = (() => {
         `;
       } else if (msg.type === 'START_MATCH' && pvp.role === 'GUEST') {
         const mapObj = MAPS_DB.find(m => m.id === msg.mapId) || CLASSIC_ABYSS_MAP;
-        setupWorldMap(mapObj, mapObj.size, mapObj.size);
+        // v15：與房主使用完全相同的世界尺寸（畫面即戰場），保證兩端座標系一致
+        setupWorldMap(mapObj, mapObj.size, mapObj.size, true, msg.worldW || 0, msg.worldH || 0);
         pvp.bestOf = msg.bestOf;
         pvp.startShield = msg.startShield;
         pvp.cratesEnabled = msg.cratesEnabled;
@@ -6032,21 +6271,38 @@ const ART = (() => {
         pvp.p1Picked = false;
         pvp.p2Picked = false;
         pvp.round = msg.round;
+        pvp.lastRoundWinner = msg.winnerId;
         state.mode = 'PVP_UPGRADE';
+        // v15：敗者端顯示追趕獎勵提示，勝者端顯示勝者獎勵
+        const loserId = msg.winnerId === 'P1' ? 'P2' : 'P1';
+        const mySide = pvp.role === 'HOST' ? 'P1' : 'P2';
         document.getElementById('pvpRoundResultBanner').textContent =
-          `ROUND ${msg.round} — ${msg.winnerId === 'P1' ? 'P1 量子藍翼' : 'P2 緋紅破曉'} 勝出！`;
+          `ROUND ${msg.round} — ${msg.winnerId === 'P1' ? 'P1 量子藍翼' : 'P2 緋紅破曉'} 勝出！` +
+          (mySide === loserId ? '（你獲得敗者重整：+12% 護盾）' : '（勝者獎勵：4 選 1）');
         renderPvpUpgradeCards();
         document.getElementById('pvpUpgradeModal').classList.remove('hidden');
       } else if (msg.type === 'UPGRADE_STATE' && pvp.role === 'GUEST') {
         pvp.p1Picked = !!msg.p1Picked;
         pvp.p2Picked = pvp.p2Picked || !!msg.p2Picked;
         renderPvpUpgradeCards();
+      } else if (msg.type === 'SUDDEN_DEATH' && pvp.role === 'GUEST') {
+        // v15：時間到且護盾比例相同 → 突然死亡（房主權威裁定，訪客套用狀態）
+        if (pvp.p1 && pvp.p2) {
+          pvp.p1.shield = msg.p1Shield;
+          pvp.p2.shield = msg.p2Shield;
+        }
+        pvp.roundTime = 55;
+        pvp.suddenDeath = true;
+        showWaveBanner('SUDDEN DEATH', '護盾比例相同 — 護盾減半，先倒者敗！');
       } else if (msg.type === 'ROUND_START' && pvp.role === 'GUEST') {
         document.getElementById('pvpUpgradeModal').classList.add('hidden');
         startPvpRound(msg.round);
       } else if (msg.type === 'WORLD_STATE' && pvp.role === 'GUEST' && pvp.p1 && pvp.p2) {
         Object.assign(pvp.p1, msg.p1);
         Object.assign(pvp.p2, msg.p2);
+        // v15：同步部署倒數與回合計時（訪客端只顯示，權威判定在房主）
+        pvp.introTimer = msg.intro || 0;
+        pvp.roundTime = msg.rt || 0;
         const byId = { P1: pvp.p1, P2: pvp.p2 };
         if (typeof msg.t === 'number') state.globalTime = msg.t;   // 同步時間，讓移動牆與機關位置一致
         state.bullets = (msg.bullets || []).map(b => Object.assign({}, b, { owner: byId[b.ownerId] || pvp.p1 }));
@@ -6079,7 +6335,9 @@ const ART = (() => {
       pvp.scoreP2 = 0;
 
       const mapObj = MAPS_DB.find(m => m.id === state.selectedMapId) || CLASSIC_ABYSS_MAP;
-      setupWorldMap(mapObj, mapObj.size, mapObj.size);
+      // v15：雙人對戰改「畫面即戰場」——整座競技場縮進單一畫面，兩人永遠同框不再躲貓貓，
+      // 重力井／雷射閘門／蟲洞等地圖機關從此是雙方共享的戰術資源（雙人好玩的核心修正）。
+      setupWorldMap(mapObj, mapObj.size, mapObj.size, true);
       state.matchType = 'PVP';
 
       sendNetMessage({
@@ -6087,7 +6345,9 @@ const ART = (() => {
         mapId: mapObj.id,
         bestOf: pvp.bestOf,
         startShield: pvp.startShield,
-        cratesEnabled: pvp.cratesEnabled
+        cratesEnabled: pvp.cratesEnabled,
+        worldW: state.world.width,
+        worldH: state.world.height
       });
 
       document.getElementById('startScreen').classList.add('hidden');
@@ -6238,7 +6498,7 @@ const ART = (() => {
       return Object.assign({}, built, { walls, movingWalls, spawns });
     }
 
-    function setupWorldMap(mapObj, w, h, fitToScreen = false) {
+    function setupWorldMap(mapObj, w, h, fitToScreen = false, forceW = 0, forceH = 0) {
       const built = augmentArena(mapObj.build(), mapObj);
       const srcW = w || mapObj.size || 2800;
       const srcH = h || mapObj.size || 2800;
@@ -6248,8 +6508,9 @@ const ART = (() => {
       // 單人畫面即戰場模式：把整張競技場等比縮放塞進單一畫面內
       let scaled = built;
       if (fitToScreen) {
-        worldW = Math.max(900, viewW());
-        worldH = Math.max(640, viewH());
+        // v15：可用強制尺寸（雙人對戰時由房主統一裁定，保證兩端座標系完全一致）
+        worldW = forceW > 0 ? forceW : Math.max(900, viewW());
+        worldH = forceH > 0 ? forceH : Math.max(640, viewH());
         const k = Math.min(worldW / srcW, worldH / srcH);
         const offX = (worldW - srcW * k) * 0.5;
         const offY = (worldH - srcH * k) * 0.5;
@@ -6515,6 +6776,8 @@ const ART = (() => {
       const eligible = MODULES_DB.filter(m => {
         const curLv = getModLv(fighter, m.id);
         if (curLv >= m.maxLv) return false;
+        // v15.2：雙人模式過濾單人限定模組（連鎖閃電只作用於敵軍 AI，雙人場無目標）
+        if (state.matchType === 'PVP' && m.id === 'arc_lightning') return false;
         if (m.cat === 'FUSION') {
           if (m.id === 'syn_storm_rail') return getModLv(fighter, 'railgun_beam') >= 1 && getModLv(fighter, 'arc_lightning') >= 1;
           if (m.id === 'syn_kaleidoscope') return getModLv(fighter, 'prism_refraction') >= 1 && getModLv(fighter, 'vector_ricochet') >= 1;
@@ -6863,7 +7126,7 @@ const ART = (() => {
           document.getElementById('bossHpBar').style.width = `${(state.boss.hp / state.boss.maxHp) * 100}%`;
           document.getElementById('bossHpText').textContent = `${Math.ceil(state.boss.hp)} / ${state.boss.maxHp}`;
           const aliveNodes = state.boss.nodes.filter(n => n.hp > 0).length;
-          document.getElementById('bossNodesTag').textContent = `護盾節點 ${aliveNodes}/3`;
+          document.getElementById('bossNodesTag').textContent = `護盾節點 ${aliveNodes}/${state.boss.nodes.length}`;
         }
       } else if (state.mode === 'PVP_PLAYING' && state.pvp.p1 && state.pvp.p2) {
         const pvp = state.pvp;
@@ -6881,7 +7144,21 @@ const ART = (() => {
 
         document.getElementById('pvpScoreP1').textContent = pvp.scoreP1;
         document.getElementById('pvpScoreP2').textContent = pvp.scoreP2;
-        document.getElementById('pvpRoundLabel').textContent = `ROUND ${pvp.round}`;
+        // v15：回合資訊——部署倒數 / 剩餘時間（最後 15 秒轉紅）／突然死亡
+        let roundInfo = `ROUND ${pvp.round}`;
+        if ((pvp.introTimer || 0) > 0) {
+          roundInfo += ` · 部署 ${pvp.introTimer.toFixed(1)}s`;
+        } else if (pvp.suddenDeath) {
+          roundInfo += ' · SUDDEN DEATH';
+        } else {
+          const remain = Math.max(0, 75 - (pvp.roundTime || 0));
+          const infoEl = document.getElementById('pvpRoundLabel');
+          roundInfo += ` · 剩餘 ${Math.ceil(remain)}s`;
+          infoEl.className = remain <= 15
+            ? 'text-[11px] font-bold text-rose-400 animate-pulse'
+            : 'text-[11px] font-bold text-amber-300';
+        }
+        document.getElementById('pvpRoundLabel').textContent = roundInfo;
       }
     }
 
@@ -7141,12 +7418,56 @@ const ART = (() => {
         ctx.stroke();
         ctx.restore();
 
-        // 中央清晰高對比符號（! × # + ÷ ≈ ?）
+        // v16：純幾何內芯（取代文字符號）——每種敵人一種內形，維持辨識度
         ctx.fillStyle = strokeCol;
-        ctx.font = `800 ${Math.max(11, Math.round(e.radius * 0.95))}px "JetBrains Mono", monospace`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(e.symbol, 0, 0.5);
+        const ir = Math.max(3, e.radius * 0.42);
+        ctx.beginPath();
+        if (e.type === 'chaser') {
+          // 內三角（同向外尖）
+          ctx.moveTo(ir * 1.35, 0);
+          ctx.lineTo(-ir * 0.7, -ir);
+          ctx.lineTo(-ir * 0.7, ir);
+          ctx.closePath();
+        } else if (e.type === 'swarmer') {
+          // 內菱形
+          ctx.moveTo(ir, 0); ctx.lineTo(0, -ir); ctx.lineTo(-ir, 0); ctx.lineTo(0, ir);
+          ctx.closePath();
+        } else if (e.type === 'bulwark') {
+          // 內方形
+          ctx.rect(-ir * 0.8, -ir * 0.8, ir * 1.6, ir * 1.6);
+        } else if (e.type === 'sniper') {
+          // 內圓
+          ctx.arc(0, 0, ir * 0.75, 0, Math.PI * 2);
+        } else if (e.type === 'splitter' || e.type === 'mini_splitter') {
+          // 內斜方（45°）
+          for (let k = 0; k < 4; k++) {
+            const a = (Math.PI / 4) + (Math.PI / 2) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * ir, Math.sin(a) * ir);
+            else ctx.lineTo(Math.cos(a) * ir, Math.sin(a) * ir);
+          }
+          ctx.closePath();
+        } else if (e.type === 'pulsar') {
+          // 內圓（之後挖芯成環）
+          ctx.arc(0, 0, ir, 0, Math.PI * 2);
+        } else if (e.type === 'phantom') {
+          // 內斜方
+          for (let k = 0; k < 4; k++) {
+            const a = (Math.PI / 4) + (Math.PI / 2) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * ir, Math.sin(a) * ir);
+            else ctx.lineTo(Math.cos(a) * ir, Math.sin(a) * ir);
+          }
+          ctx.closePath();
+        } else {
+          // 內圓
+          ctx.arc(0, 0, ir * 0.7, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        if (e.type === 'pulsar') {
+          ctx.fillStyle = 'rgba(8, 12, 24, 0.88)';
+          ctx.beginPath();
+          ctx.arc(0, 0, ir * 0.45, 0, Math.PI * 2);
+          ctx.fill();
+        }
 
         // 血條
         if (e.hp < e.maxHp) {
@@ -7160,32 +7481,156 @@ const ART = (() => {
         ctx.restore();
       }
 
-      // ARCHITECT TITAN 首領與 3 個護盾節點
+      // v16：首領繪製（依 kind：主宰者八邊形 / 掠奪者長矛形 / 君主巨環），純幾何無文字
       if (state.boss && state.boss.hp > 0) {
         const b = state.boss;
+        const bossCol = b.kind === 'reaver' ? '#38bdf8' : (b.kind === 'monarch' ? '#c084fc' : (b.kind === 'warden' ? '#00f59b' : (b.kind === 'shade' ? '#e879f9' : (b.kind === 'prism' ? '#ffb703' : '#ff2a6d'))));
+        const strokeC = b.hitFlash > 0 ? '#ffffff' : bossCol;
         ctx.save();
         ctx.translate(b.x, b.y);
-        ctx.save();
-        ctx.rotate(b.spin);
-        ctx.strokeStyle = b.hitFlash > 0 ? '#ffffff' : '#ff2a6d';
+        ctx.strokeStyle = strokeC;
         ctx.fillStyle = 'rgba(12, 8, 22, 0.92)';
         ctx.lineWidth = 3.2;
-        ctx.beginPath();
-        for (let k = 0; k < 8; k++) {
-          const a = (Math.PI / 4) * k;
-          if (k === 0) ctx.moveTo(Math.cos(a) * b.radius, Math.sin(a) * b.radius);
-          else ctx.lineTo(Math.cos(a) * b.radius, Math.sin(a) * b.radius);
+        if (b.kind === 'reaver') {
+          // 長矛形機體（朝向玩家）
+          ctx.save();
+          ctx.rotate(b.angle || 0);
+          ctx.beginPath();
+          ctx.moveTo(b.radius * 1.55, 0);
+          ctx.lineTo(-b.radius * 0.85, -b.radius * 0.9);
+          ctx.lineTo(-b.radius * 0.25, 0);
+          ctx.lineTo(-b.radius * 0.85, b.radius * 0.9);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          // 內芯菱形
+          ctx.fillStyle = strokeC;
+          ctx.beginPath();
+          ctx.moveTo(b.radius * 0.55, 0);
+          ctx.lineTo(0, -b.radius * 0.3);
+          ctx.lineTo(-b.radius * 0.45, 0);
+          ctx.lineTo(0, b.radius * 0.3);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        } else if (b.kind === 'monarch') {
+          // 巨環本體＋內六邊形核心
+          ctx.beginPath();
+          ctx.arc(0, 0, b.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.save();
+          ctx.rotate(b.spin);
+          ctx.beginPath();
+          for (let k = 0; k < 6; k++) {
+            const a = (Math.PI / 3) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * b.radius * 0.55, Math.sin(a) * b.radius * 0.55);
+            else ctx.lineTo(Math.cos(a) * b.radius * 0.55, Math.sin(a) * b.radius * 0.55);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          ctx.restore();
+          ctx.fillStyle = strokeC;
+          ctx.beginPath();
+          ctx.arc(0, 0, b.radius * 0.16, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (b.kind === 'warden') {
+          // 看守者：旋轉方框＋內十字＋中心點；牽引生效時外圈虛線警示環
+          ctx.save();
+          ctx.rotate(b.spin * 0.7);
+          ctx.beginPath();
+          ctx.rect(-b.radius * 0.9, -b.radius * 0.9, b.radius * 1.8, b.radius * 1.8);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(-b.radius * 0.45, 0);
+          ctx.lineTo(b.radius * 0.45, 0);
+          ctx.moveTo(0, -b.radius * 0.45);
+          ctx.lineTo(0, b.radius * 0.45);
+          ctx.stroke();
+          ctx.restore();
+          ctx.fillStyle = strokeC;
+          ctx.beginPath();
+          ctx.arc(0, 0, b.radius * 0.16, 0, Math.PI * 2);
+          ctx.fill();
+          if (b.pullT > 0) {
+            ctx.setLineDash([6, 6]);
+            ctx.beginPath();
+            ctx.arc(0, 0, b.radius + 26 + Math.sin(b.spin * 6) * 6, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          }
+        } else if (b.kind === 'shade') {
+          // 刺客：倒三角機體＋反向內三角
+          ctx.save();
+          ctx.rotate(Math.PI + Math.sin(b.spin) * 0.2);
+          ctx.beginPath();
+          ctx.moveTo(0, -b.radius * 1.2);
+          ctx.lineTo(b.radius, b.radius * 0.75);
+          ctx.lineTo(-b.radius, b.radius * 0.75);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = strokeC;
+          ctx.beginPath();
+          ctx.moveTo(0, b.radius * 0.55);
+          ctx.lineTo(-b.radius * 0.5, -b.radius * 0.35);
+          ctx.lineTo(b.radius * 0.5, -b.radius * 0.35);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        } else if (b.kind === 'prism') {
+          // 巨像：大菱形＋內四角星＋中心環
+          ctx.save();
+          ctx.rotate(b.spin);
+          ctx.beginPath();
+          ctx.moveTo(b.radius * 1.15, 0);
+          ctx.lineTo(0, -b.radius * 1.15);
+          ctx.lineTo(-b.radius * 1.15, 0);
+          ctx.lineTo(0, b.radius * 1.15);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          for (let k = 0; k < 8; k++) {
+            const rr = k % 2 === 0 ? b.radius * 0.62 : b.radius * 0.26;
+            const a = (Math.PI / 4) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * rr, Math.sin(a) * rr);
+            else ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          ctx.restore();
+          ctx.beginPath();
+          ctx.arc(0, 0, b.radius * 0.2, 0, Math.PI * 2);
+          ctx.stroke();
+        } else {
+          // 主宰者：旋轉八邊形＋反向內六邊形核心（純幾何，取代 Ω）
+          ctx.save();
+          ctx.rotate(b.spin);
+          ctx.beginPath();
+          for (let k = 0; k < 8; k++) {
+            const a = (Math.PI / 4) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * b.radius, Math.sin(a) * b.radius);
+            else ctx.lineTo(Math.cos(a) * b.radius, Math.sin(a) * b.radius);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          for (let k = 0; k < 6; k++) {
+            const a = (Math.PI / 3) * k;
+            if (k === 0) ctx.moveTo(Math.cos(a) * b.radius * 0.5, Math.sin(a) * b.radius * 0.5);
+            else ctx.lineTo(Math.cos(a) * b.radius * 0.5, Math.sin(a) * b.radius * 0.5);
+          }
+          ctx.closePath();
+          ctx.stroke();
+          ctx.restore();
+          ctx.fillStyle = strokeC;
+          ctx.beginPath();
+          ctx.arc(0, 0, b.radius * 0.18, 0, Math.PI * 2);
+          ctx.fill();
         }
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
-
-        ctx.fillStyle = '#ff2a6d';
-        ctx.font = '900 28px "Orbitron", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('Ω', 0, 1);
         ctx.restore();
 
         for (const n of b.nodes) {
@@ -7278,15 +7723,16 @@ const ART = (() => {
       for (const b of state.bullets) {
         ctx.save();
         ctx.lineCap = 'round';
+        const bs = b.scale || 1.0;  // v15.1：量子膨脹彈芯——彈體線寬放大
         ctx.strokeStyle = b.color;
-        ctx.lineWidth = b.isRocket ? 5.6 : (b.isCap ? 4.8 : 3.2);
+        ctx.lineWidth = (b.isRocket ? 5.6 : (b.isCap ? 4.8 : 3.2)) * bs;
         ctx.beginPath();
         ctx.moveTo(b.prevX, b.prevY);
         ctx.lineTo(b.x, b.y);
         ctx.stroke();
 
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = b.isRocket ? 2.2 : (b.isCap ? 1.9 : 1.2);
+        ctx.lineWidth = (b.isRocket ? 2.2 : (b.isCap ? 1.9 : 1.2)) * bs;
         ctx.beginPath();
         ctx.moveTo(b.prevX, b.prevY);
         ctx.lineTo(b.x, b.y);
@@ -7439,6 +7885,22 @@ const ART = (() => {
         ctx.arc(0, 0, 3.0, 0, Math.PI * 2);
         ctx.fill();
 
+        ctx.restore();
+      }
+
+      // v15：雙人部署倒數——畫面中央巨大數字（雙方禁止開火的準備期）
+      if (state.mode === 'PVP_PLAYING' && state.pvp && (state.pvp.introTimer || 0) > 0) {
+        ctx.save();
+        ctx.setTransform(state.dpr || 1, 0, 0, state.dpr || 1, 0, 0);
+        const it = state.pvp.introTimer;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '900 96px "JetBrains Mono", "Noto Sans TC", sans-serif';
+        ctx.fillStyle = 'rgba(158, 226, 255, 0.92)';
+        ctx.fillText(Math.ceil(it).toString(), vw * 0.5, vh * 0.42);
+        ctx.font = '700 20px "JetBrains Mono", "Noto Sans TC", sans-serif';
+        ctx.fillStyle = 'rgba(148, 197, 235, 0.85)';
+        ctx.fillText('部署中 — 開火系統上線中', vw * 0.5, vh * 0.52);
         ctx.restore();
       }
 
